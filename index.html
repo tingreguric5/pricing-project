@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello, pricing!</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+      color: #1f2937;
+      background: #f5f7fa;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 16px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 6vw, 3rem);
+    }
+
+    .author {
+      margin: 0;
+      color: #6b7280;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .plan {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plan.featured {
+      border: 2px solid #2563eb;
+    }
+
+    .plan h2 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+    }
+
+    .price {
+      margin: 0 0 20px;
+      font-size: 2.25rem;
+      font-weight: 700;
+    }
+
+    .price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #6b7280;
+    }
+
+    .plan ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .plan li {
+      padding: 8px 0;
+      border-top: 1px solid #f0f1f3;
+    }
+
+    .plan li::before {
+      content: "✓ ";
+      color: #2563eb;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Hello, pricing!</h1>
+      <p class="author">TIN GREGURIĆ</p>
+    </header>
+
+    <section class="plans" aria-label="Pricing plans for TaskNest">
+      <article class="plan">
+        <h2>Free</h2>
+        <p class="price">€0 <span>/ month</span></p>
+        <ul>
+          <li>Up to 3 projects</li>
+          <li>Basic task lists</li>
+          <li>Community support</li>
+        </ul>
+      </article>
+
+      <article class="plan featured">
+        <h2>Basic</h2>
+        <p class="price">€5 <span>/ month</span></p>
+        <ul>
+          <li>Unlimited projects</li>
+          <li>Reminders &amp; due dates</li>
+          <li>Email support</li>
+        </ul>
+      </article>
+
+      <article class="plan">
+        <h2>Pro</h2>
+        <p class="price">€12 <span>/ month</span></p>
+        <ul>
+          <li>Everything in Basic</li>
+          <li>Team sharing</li>
+          <li>Priority support</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
