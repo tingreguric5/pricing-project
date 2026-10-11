@@ -3,133 +3,492 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello, pricing!</title>
+  <title>VoltPoint Distribution – Ladewerk chargers for installers in Croatia</title>
+  <meta name="description" content="Ladewerk smart home chargers for electric cars (11 kW wallbox, made in Germany), sold only to licensed installers in Croatia.">
   <style>
+    :root {
+      --brand: #1565C0;
+      --brand-dark: #0D47A1;
+      --brand-light: #E3EEFA;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --border: #e5e7eb;
+      --bg-alt: #f6f8fb;
+    }
+
     *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.5;
-      color: #1f2937;
-      background: #f5f7fa;
-    }
-
-    main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 48px 16px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: clamp(2rem, 6vw, 3rem);
-    }
-
-    .author {
-      margin: 0;
-      color: #6b7280;
-      letter-spacing: 0.08em;
-      font-weight: 600;
-    }
-
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
-    .plan {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .plan.featured {
-      border: 2px solid #2563eb;
-    }
-
-    .plan h2 {
-      margin: 0 0 8px;
-      font-size: 1.25rem;
-    }
-
-    .price {
-      margin: 0 0 20px;
-      font-size: 2.25rem;
-      font-weight: 700;
-    }
-
-    .price span {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       font-size: 1rem;
-      font-weight: 400;
-      color: #6b7280;
+      line-height: 1.6;
+      color: var(--text);
+      background: #fff;
+      overflow-wrap: break-word;
     }
 
-    .plan ul {
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1, h2, h3 {
+      color: var(--brand);
+      line-height: 1.25;
+      margin: 0 0 16px;
+    }
+
+    h2 { font-size: clamp(1.6rem, 4vw, 2rem); }
+    h3 { font-size: 1.2rem; }
+
+    p { margin: 0 0 16px; }
+
+    a { color: var(--brand); }
+
+    a:focus-visible {
+      outline: 3px solid var(--brand);
+      outline-offset: 2px;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-header .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px 24px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
       list-style: none;
       margin: 0;
       padding: 0;
     }
 
-    .plan li {
-      padding: 8px 0;
-      border-top: 1px solid #f0f1f3;
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 12px;
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 1rem;
+      text-decoration: none;
     }
 
-    .plan li::before {
-      content: "✓ ";
-      color: #2563eb;
+    .nav a:hover { background: var(--brand-light); color: var(--brand); }
+
+    /* Sections */
+    section {
+      padding: 72px 0;
+      scroll-margin-top: 72px;
+    }
+
+    section:nth-of-type(even) { background: var(--bg-alt); }
+
+    .section-intro {
+      max-width: 680px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 96px 0;
+      background: linear-gradient(180deg, var(--brand-light) 0%, #fff 100%);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      max-width: 800px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 28px;
+      border-radius: 8px;
+      background: var(--brand);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .button:hover { background: var(--brand-dark); }
+
+    /* Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .card p:last-child { margin-bottom: 0; }
+
+    /* Steps */
+    .steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      counter-reset: step;
+    }
+
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding-top: 64px;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
       font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .steps li.card { padding-top: 84px; }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 800px;
+      margin: 0;
+    }
+
+    .faq-list dt {
+      font-weight: 700;
+      color: var(--brand);
+      font-size: 1.1rem;
+      margin-top: 28px;
+    }
+
+    .faq-list dt:first-child { margin-top: 0; }
+
+    .faq-list dd {
+      margin: 8px 0 0;
+      color: var(--text);
+    }
+
+    /* Contact */
+    .contact-mail {
+      font-size: 1.2rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    .site-footer p { margin: 0; }
+
+    @media (max-width: 600px) {
+      section { padding: 56px 0; }
+      .hero { padding: 64px 0; }
+      .nav a { padding: 0 10px; }
+      .card { padding: 22px; }
+      .steps li::before { left: 22px; top: 22px; }
+      .steps li.card { padding-top: 76px; }
+      section { scroll-margin-top: 112px; }
+      #pricing .price-card .badge { font-size: 0.875rem; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>Hello, pricing!</h1>
-      <p class="author">TIN GREGURIĆ</p>
-    </header>
-
-    <section class="plans" aria-label="Pricing plans for TaskNest">
-      <article class="plan">
-        <h2>Free</h2>
-        <p class="price">€0 <span>/ month</span></p>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="#top">VoltPoint Distribution</a>
+      <nav class="nav" aria-label="Main menu">
         <ul>
-          <li>Up to 3 projects</li>
-          <li>Basic task lists</li>
-          <li>Community support</li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-      </article>
+      </nav>
+    </div>
+  </header>
 
-      <article class="plan featured">
-        <h2>Basic</h2>
-        <p class="price">€5 <span>/ month</span></p>
-        <ul>
-          <li>Unlimited projects</li>
-          <li>Reminders &amp; due dates</li>
-          <li>Email support</li>
-        </ul>
-      </article>
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <h1>Ladewerk chargers for Croatian installers</h1>
+        <p>VoltPoint Distribution from Zagreb is the only importer of Ladewerk 11 kW wallboxes, made in Germany, for Croatia – sold only to licensed electricians.</p>
+        <a class="button" href="#pricing">See our offers</a>
+      </div>
+    </section>
 
-      <article class="plan">
-        <h2>Pro</h2>
-        <p class="price">€12 <span>/ month</span></p>
-        <ul>
-          <li>Everything in Basic</li>
-          <li>Team sharing</li>
-          <li>Priority support</li>
+    <section id="benefits">
+      <div class="container">
+        <h2>Benefits</h2>
+        <p class="section-intro">We sell only to licensed electricians, who sell and install the charger for households and small firms.</p>
+        <div class="grid">
+          <article class="card">
+            <h3>Win subsidised jobs</h3>
+            <p>With our Pro offer we prepare the subsidy paperwork for certified installers. The national subsidy applies only to chargers bought in Croatia.</p>
+          </article>
+          <article class="card">
+            <h3>Local warranty swap in 48 hours</h3>
+            <p>If a charger fails, we replace it within 48 hours instead of 3–4 weeks through Germany. This is included in every offer.</p>
+          </article>
+          <article class="card">
+            <h3>Two ways to buy</h3>
+            <p>Pro with next-day delivery from our stock in Zagreb and Split, or Direct with a simple online order and courier delivery.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <h2>How it works</h2>
+        <p class="section-intro">Three simple steps, whether you install many chargers a year or only a few.</p>
+        <ol class="steps grid">
+          <li class="card">
+            <h3>Choose your offer</h3>
+            <p>Pick the offer that fits how many chargers you install – Pro or Direct.</p>
+          </li>
+          <li class="card">
+            <h3>Order your chargers</h3>
+            <p>Order from our stock in Zagreb and Split, or online.</p>
+          </li>
+          <li class="card">
+            <h3>Install for your customer</h3>
+            <p>Install the charger for your customer. If it fails, we replace it within 48 hours.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <h2>Pricing</h2>
+        <style>
+          #pricing .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            list-style: none;
+            margin: 0 0 24px;
+            padding: 0;
+          }
+          @media (min-width: 768px) {
+            #pricing .pricing-grid {
+              grid-auto-flow: column;
+              grid-auto-columns: minmax(0, 1fr);
+            }
+          }
+          #pricing .price-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+          }
+          #pricing .price-card.recommended {
+            border: 2px solid var(--brand);
+            box-shadow: 0 8px 24px rgba(21, 101, 192, 0.15);
+          }
+          #pricing .badge {
+            position: absolute;
+            top: -14px;
+            left: 28px;
+            padding: 2px 12px;
+            border-radius: 999px;
+            background: var(--brand);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 700;
+          }
+          #pricing .price {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text);
+          }
+          #pricing .price-unit {
+            margin: 4px 0 12px;
+            color: var(--muted);
+            font-size: 0.9rem;
+          }
+          #pricing .audience { font-weight: 600; }
+          #pricing .tiers,
+          #pricing .features {
+            margin: 0 0 16px;
+            padding-left: 20px;
+          }
+          #pricing .tiers {
+            padding: 12px 16px;
+            list-style: none;
+            background: var(--brand-light);
+            border-radius: 8px;
+          }
+          #pricing .features { flex-grow: 1; }
+          #pricing .features li,
+          #pricing .tiers li { margin-bottom: 4px; }
+          #pricing .price-card .button {
+            width: 100%;
+            margin-top: auto;
+          }
+          #pricing .pricing-note {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.875rem;
+          }
+        </style>
+        <p class="section-intro">Genuine Ladewerk chargers with a Croatian warranty – a replacement in 48 hours, not 3–4 weeks – and with Pro, everything you need to win subsidised jobs.</p>
+        <ul class="pricing-grid">
+          <li class="card price-card">
+            <h3>VoltPoint Direct</h3>
+            <p class="price">€579</p>
+            <p class="price-unit">per charger, excl. VAT</p>
+            <p class="audience">For occasional installers</p>
+            <ul class="features">
+              <li>Online order paid in advance</li>
+              <li>Courier delivery</li>
+              <li>E-mail support</li>
+              <li>48-hour local warranty swap</li>
+            </ul>
+            <a class="button" href="#contact">Choose VoltPoint Direct</a>
+          </li>
+          <li class="card price-card recommended">
+            <span class="badge">Recommended</span>
+            <h3>VoltPoint Pro</h3>
+            <p class="price">€600 / €585 / €570</p>
+            <p class="price-unit">per charger, excl. VAT</p>
+            <ul class="tiers" aria-label="Volume prices">
+              <li>up to 49 a year: €600</li>
+              <li>50–119 a year: €585</li>
+              <li>120+ a year: €570</li>
+            </ul>
+            <p class="audience">For specialist installers</p>
+            <ul class="features">
+              <li>Next-day delivery from stock in Zagreb and Split</li>
+              <li>Certification training</li>
+              <li>Technical hotline</li>
+              <li>Subsidy paperwork</li>
+              <li>48-hour local warranty swap</li>
+              <li>60 days to pay</li>
+            </ul>
+            <a class="button" href="#contact">Choose VoltPoint Pro</a>
+          </li>
         </ul>
-      </article>
+        <p class="pricing-note">Pro price band set by your purchases in the previous year and checked every January; €5 off per charger for payment within 10 days; no negotiated discounts – everyone pays the published price; recommended consumer price €949 including VAT (a recommendation only – installers set their own prices). All prices are per charger and exclude 25% VAT.</p>
+        <div class="card" style="margin-top: 24px; max-width: 480px;">
+          <h3>VoltPoint Pro price calculator</h3>
+          <label for="calc-qty">Number of chargers you buy per year (VoltPoint Pro)</label>
+          <input id="calc-qty" type="number" min="1" step="1" inputmode="numeric" style="display: block; width: 100%; min-height: 44px; margin: 8px 0 16px; padding: 0 12px; font-size: 1rem; border: 1px solid var(--border); border-radius: 6px;">
+          <div id="calc-result" aria-live="polite">Please enter a number</div>
+          <p class="pricing-note" style="margin-top: 12px;">Prices exclude 25% VAT.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <h2>FAQ</h2>
+        <dl class="faq-list">
+          <dt>Which offer is right for me?</dt>
+          <dd>VoltPoint Pro is for specialists who install many chargers: next-day stock, training, hotline, subsidy paperwork and 60 days to pay. VoltPoint Direct is for occasional installers: a simple online order, paid in advance, with courier delivery and the same 48-hour warranty swap.</dd>
+
+          <dt>How is my Pro price set?</dt>
+          <dd>Your price per charger depends on how many chargers you bought in the previous year: €600 for up to 49, €585 for 50–119 and €570 for 120 or more. Every installer pays the published price for their band – there are no negotiated discounts.</dd>
+
+          <dt>Can I get help with the subsidy?</dt>
+          <dd>Yes, with VoltPoint Pro. The national subsidy can be filed only by certified installers and only for chargers bought in Croatia; we prepare the paperwork for you.</dd>
+
+          <dt>Do I have to sell at €949?</dt>
+          <dd>No. €949 including VAT is our recommended consumer price. You set your own price.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Are you a licensed installer in Croatia? Write to us and we will help you choose the right offer.</p>
+        <a class="contact-mail" href="mailto:hello@voltpoint.example">hello@voltpoint.example</a>
+      </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 VoltPoint Distribution – student project, fictitious company</p>
+    </div>
+  </footer>
+  <script>
+    var qty = document.getElementById('calc-qty');
+    var result = document.getElementById('calc-result');
+    var eur = function (n) { return n.toLocaleString('en-IE', { style: 'currency', currency: 'EUR' }); };
+    qty.addEventListener('input', function () {
+      var n = Number(qty.value);
+      if (qty.value.trim() === '' || !Number.isInteger(n) || n < 1) {
+        result.textContent = 'Please enter a number';
+        return;
+      }
+      var price = n >= 120 ? 570 : n >= 50 ? 585 : 600;
+      result.innerHTML = 'Your Pro price per charger: <strong>' + eur(price) + '</strong><br>Your total per year: <strong>' + eur(n * price) + '</strong>';
+    });
+  </script>
 </body>
 </html>
